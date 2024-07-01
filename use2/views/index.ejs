@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>은행 홈페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+    <%- include('menu.html') %>
+    
+    <div class="container mt-5">
+      <div class="text-center mb-4">
+        <h1>환영합니다</h1>
+        <p>신뢰와 안정의 은행, 당신의 금융 파트너</p>
+        <!-- Display the photo -->
+        <img src="/images/homepage_photo.jpg" alt="은행 사진" class="img-fluid mt-3">
+
+        <!-- Add a form to upload a new photo -->
+        <% if (typeof user !== 'undefined' && user) { %>
+          <form action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
+            <div class="mb-3">
+              <label for="photo" class="form-label">새로운 사진 업로드</label>
+              <input class="form-control" type="file" id="photo" name="photo" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">업로드</button>
+          </form>
+          <!-- Logout button -->
+          <form action="/logout" method="post" class="mt-3">
+            <button type="submit" class="btn btn-danger">로그아웃</button>
+          </form>
+        <% } %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">사용자 정보 확인</h5>
+              <p class="card-text">사용자 정보를 확인하고 관리하세요.</p>
+              <% if (typeof user !== 'undefined' && user) { %>
+                <a href="/profile" class="btn btn-primary">자세히 보기</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">입금 출금</h5>
+              <p class="card-text">쉽고 빠르게 입금하고 출금하세요.</p>
+              <% if (typeof user !== 'undefined' && user) { %>
+                <a href="/transactions" class="btn btn-primary">자세히 보기</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
