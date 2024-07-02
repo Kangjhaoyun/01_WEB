@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('menu.html') %>
+      
+    <% if(typeof data != 'undefined' && data.alertMsg){ %>
+      <script>
+        alert(`<%= data.alertMsg %>`) ;
+      </script>            
+    <% } %>
+    
+    <h1>홈입니다.</h1>    
+
+  </body>
+</html>
